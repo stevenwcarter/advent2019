@@ -16,6 +16,7 @@
     "babel-jest": "^24.9.0"
   },
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "day": "npx babel-node -- "
   }
 }
