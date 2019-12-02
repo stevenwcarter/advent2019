@@ -1,0 +1,21 @@
+{
+  "name": "advent",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Steven Carter <steven.carter@bounteous.com>",
+  "license": "MIT",
+  "dependencies": {
+    "jest": "^24.9.0",
+    "line-reader": "^0.4.0",
+    "lodash": "^4.17.15"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.7.4",
+    "@babel/node": "^7.7.4",
+    "@babel/preset-env": "^7.7.4",
+    "babel-jest": "^24.9.0"
+  },
+  "scripts": {
+    "test": "jest"
+  }
+}
