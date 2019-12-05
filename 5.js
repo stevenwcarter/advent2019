@@ -1,4 +1,4 @@
-import _ from 'lodash';
+/* global process */
 import { intCodeSolver } from './utils.js';
 
 const input =

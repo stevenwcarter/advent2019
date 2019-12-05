@@ -1,3 +1,4 @@
+/* global process */
 // input
 const lower = 367479;
 const upper = 893698;
@@ -22,6 +23,7 @@ const increasingRule = pass => {
 
   const test = numerals.reduce((acc, number) => {
     if (acc === 99) {
+      // do nothing
     } else if (number >= acc) {
       acc = number;
     } else if (number < acc) {
