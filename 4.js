@@ -1,5 +1,6 @@
 /* global process */
 // input
+import _ from 'lodash';
 const lower = 367479;
 const upper = 893698;
 
@@ -34,19 +35,10 @@ const increasingRule = pass => {
   return test !== 99;
 };
 
-const testPass1 = pass => {
-  return twoAdjacentRule(pass) && increasingRule(pass);
-};
+const testPass1 = pass => twoAdjacentRule(pass) && increasingRule(pass);
 
-export const solvePart1 = () => {
-  let count = 0;
-  for (let i = lower; i <= upper; i++) {
-    if (testPass1(i)) {
-      count++;
-    }
-  }
-  return count;
-};
+export const solvePart1 = () =>
+  _.range(lower, upper).reduce((acc, i) => (acc += testPass1(i) ? 1 : 0), 0);
 
 if (process.env.NODE_ENV !== 'test') {
   console.log('Part 1: ', solvePart1());
@@ -65,19 +57,10 @@ const part2Rule = pass => {
   );
 };
 
-const testPass2 = pass => {
-  return twoAdjacentRule(pass) && increasingRule(pass) && part2Rule(pass);
-};
+const testPass2 = pass => twoAdjacentRule(pass) && increasingRule(pass) && part2Rule(pass);
 
-export const solvePart2 = part1Input => {
-  let count = 0;
-  for (let i = lower; i <= upper; i++) {
-    if (testPass2(i)) {
-      count++;
-    }
-  }
-  return count;
-};
+export const solvePart2 = part1Input =>
+  _.range(lower, upper).reduce((acc, i) => (acc += testPass2(i) ? 1 : 0), 0);
 
 if (process.env.NODE_ENV !== 'test') {
   console.log('Part 2: ', solvePart2());
