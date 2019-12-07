@@ -4,63 +4,57 @@ import fs from 'fs';
 
 const part1Input = fs.readFileSync('./6-input.txt', 'utf8');
 
-// const part1Input = `COM)B
-// B)C
-// C)D
-// D)E
-// E)F
-// B)G
-// G)H
-// D)I
-// E)J
-// J)K
-// K)L`;
 const inputArray = readInputAsStrings(part1Input);
 
 const orbits = {};
 
 inputArray.map(orbit => {
-  const [first, orbiter] = orbit.split(')');
+  const [base, orbiter] = orbit.split(')');
 
-  if (!orbits[orbiter]) {
-    orbits[orbiter] = [];
-  }
-  orbits[orbiter].push(first);
+  orbits[orbiter] = base;
 });
 
-// const direct = Object.keys(orbits).reduce((acc, key) => {
-//   acc += orbits[key].length;
-//   return acc;
-// }, 0);
+const direct = Object.keys(orbits).length;
 
-// const foundOrbits = {};
-const findDirectOrbits = key => {
-  const orbit = orbits[key];
+const findDirectOrbits = key => (orbits[key] ? 1 + findDirectOrbits(orbits[key]) : 0);
 
-  console.log(orbit);
+const indirect = Object.keys(orbits).reduce(
+  (acc, inner) => acc + findDirectOrbits(orbits[inner]),
+  0
+);
 
-  if (!orbit || orbit.length === 0) {
-    return 0;
-  }
+const findOrbitChain = startOrbit => {
+  const subOrbit = orbits[startOrbit];
 
-  const newOrbitCount = orbit.length;
-
-  return orbit.reduce((acc, laterOrbit) => {
-    acc += findDirectOrbits(laterOrbit);
-    return acc;
-  }, newOrbitCount);
+  return subOrbit ? [subOrbit].concat(findOrbitChain(subOrbit)) : [];
 };
 
-// const indirect = Object.keys(orbits).reduce((acc, inner) => {
-//   acc += findDirectOrbits(orbits[inner]);
-//   return acc;
-// }, 0);
+const findShortestTransferCount = (startOrbit1, startOrbit2) => {
+  let hohmannTransferCount = 0;
+  let commonOrbit = undefined;
 
-// console.log(indirect);
-// console.log(direct + indirect);
+  const youPathToCom = findOrbitChain(startOrbit1);
+  const sanPathToCom = findOrbitChain(startOrbit2);
 
-console.log('SANTA');
-findDirectOrbits(orbits['SAN']);
+  youPathToCom.map((subOrbit, index) => {
+    if (!commonOrbit) {
+      const subPosition = sanPathToCom.indexOf(subOrbit);
+      if (!commonOrbit && subPosition !== -1) {
+        commonOrbit = subOrbit;
+        hohmannTransferCount += index + subPosition;
+      }
+    }
+  });
 
-console.log('YOU');
-findDirectOrbits(orbits['YOU']);
+  return hohmannTransferCount;
+};
+
+const hohmannTransferCount = findShortestTransferCount('YOU', 'SAN');
+
+console.log('Part 1');
+console.log('Direct orbit count: ', direct);
+console.log('Indirect orbit count: ', indirect);
+console.log('Total of direct and indirect orbits: ', direct + indirect);
+console.log();
+console.log('Part 2');
+console.log('Shortest Hohmann transfer count: ', hohmannTransferCount);

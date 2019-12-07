@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="b56ae342-2434-4f62-965f-24986689ea36" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/4.js" beforeDir="false" afterPath="$PROJECT_DIR$/4.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/5.js" beforeDir="false" afterPath="$PROJECT_DIR$/5.js" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1Uc3LgvUEzPMO6UPuoFssMfJzo3" />
+  <component name="ProjectViewState">
+    <option name="autoscrollFromSource" value="true" />
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="NewWatcherDialog.advanced.open" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="yarn" />
+    <property name="prettierjs.PrettierConfiguration.Package" value="$PROJECT_DIR$/node_modules/prettier" />
+    <property name="settings.editor.selected.configurable" value="watcher.settings" />
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b56ae342-2434-4f62-965f-24986689ea36" name="Default Changelist" comment="" />
+      <created>1575642002315</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1575642002315</updated>
+      <workItem from="1575642005579" duration="95000" />
+      <workItem from="1575642938994" duration="74000" />
+      <workItem from="1575643079147" duration="454000" />
+      <workItem from="1575643615834" duration="2294000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="687" y="536" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1575643603803">
+      <screen x="0" y="23" width="2560" height="1350" />
+    </state>
+    <state x="687" y="536" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/2560.23.2560.1057/0.23.2560.1350@0.23.2560.1350" timestamp="1575643603803" />
+    <state x="589" y="586" width="819" height="653" key="EditFileWatcherDialog" timestamp="1575643819785">
+      <screen x="0" y="23" width="2560" height="1350" />
+    </state>
+    <state x="589" y="586" width="819" height="653" key="EditFileWatcherDialog/2560.23.2560.1057/0.23.2560.1350@0.23.2560.1350" timestamp="1575643819785" />
+    <state width="1358" height="271" key="GridCell.Tab.0.bottom" timestamp="1575643846267">
+      <screen x="0" y="23" width="2560" height="1350" />
+    </state>
+    <state width="1358" height="271" key="GridCell.Tab.0.bottom/2560.23.2560.1057/0.23.2560.1350@0.23.2560.1350" timestamp="1575643846267" />
+    <state width="1358" height="271" key="GridCell.Tab.0.center" timestamp="1575643846266">
+      <screen x="0" y="23" width="2560" height="1350" />
+    </state>
+    <state width="1358" height="271" key="GridCell.Tab.0.center/2560.23.2560.1057/0.23.2560.1350@0.23.2560.1350" timestamp="1575643846266" />
+    <state width="1358" height="271" key="GridCell.Tab.0.left" timestamp="1575643846265">
+      <screen x="0" y="23" width="2560" height="1350" />
+    </state>
+    <state width="1358" height="271" key="GridCell.Tab.0.left/2560.23.2560.1057/0.23.2560.1350@0.23.2560.1350" timestamp="1575643846265" />
+    <state width="1358" height="271" key="GridCell.Tab.0.right" timestamp="1575643846267">
+      <screen x="0" y="23" width="2560" height="1350" />
+    </state>
+    <state width="1358" height="271" key="GridCell.Tab.0.right/2560.23.2560.1057/0.23.2560.1350@0.23.2560.1350" timestamp="1575643846267" />
+    <state x="508" y="440" key="SettingsEditor" timestamp="1575643821635">
+      <screen x="0" y="23" width="2560" height="1350" />
+    </state>
+    <state x="508" y="440" key="SettingsEditor/2560.23.2560.1057/0.23.2560.1350@0.23.2560.1350" timestamp="1575643821635" />
+    <state x="959" y="530" key="com.intellij.ide.util.TipDialog" timestamp="1575643615705">
+      <screen x="0" y="23" width="2560" height="1350" />
+    </state>
+    <state x="959" y="530" key="com.intellij.ide.util.TipDialog/2560.23.2560.1057/0.23.2560.1350@0.23.2560.1350" timestamp="1575643615705" />
+  </component>
+</project>

@@ -8,8 +8,9 @@ const inputArray = input.split(',').map(a => parseInt(a, 10));
 const outputFunc = val => {
   console.log('out', val);
 };
-if (process.env.NODE_ENV !== 'test') {
-  intCodeSolver([...inputArray], 0, 1, outputFunc);
-  console.log('Part2');
-  intCodeSolver([...inputArray], 0, 5, outputFunc);
-}
+
+console.log('Part 1');
+intCodeSolver([...inputArray], 0, 1, outputFunc);
+console.log();
+console.log('Part 2');
+intCodeSolver([...inputArray], 0, 5, outputFunc);
