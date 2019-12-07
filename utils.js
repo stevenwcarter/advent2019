@@ -31,7 +31,8 @@ export const opCodeSolver = {
     newPos: (input, pos) => pos + 4
   },
   3: {
-    fn: (input, pos, operand1, operand2, operand3, inputVal) => (input[operand1] = inputVal),
+    fn: (input, pos, operand1, operand2, operand3, inputVal) =>
+      (input[operand1] = inputVal.shift()),
     newPos: (input, pos) => pos + 2
   },
   4: {
@@ -59,7 +60,10 @@ export const opCodeSolver = {
 export const intCodeSolver = (input, pos, inputVal, out = () => {}) => {
   const [opCode, paramMode1, paramMode2, paramMode3] = paramCodes(input[pos]);
   if (opCode === 99) {
-    return input;
+    return undefined;
+  }
+  if (opCode === 3 && inputVal.length === 0) {
+    return pos;
   }
 
   const operand1 = paramMode1 === 0 && opCode !== 3 ? input[input[pos + 1]] : input[pos + 1];
