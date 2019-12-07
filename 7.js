@@ -5,6 +5,7 @@ const input =
 
 const inputArray = input.split(',').map(a => parseInt(a, 10));
 
+// https://initjs.org/all-permutations-of-a-set-f1be174c79f8
 const getAllPermutations = vals => {
   var results = [];
 
