@@ -23,12 +23,14 @@ export const paramCodes = input => {
 
 export const opCodeSolver = {
   1: {
-    fn: (input, pos, operand1, operand2, operand3) => (input[operand3] = operand1 + operand2),
-    newPos: (input, pos) => pos + 4
+    fn: (input, pos, operand1, operand2, operand3) =>
+      (input[operand3] = checkNum(operand1) + checkNum(operand2)),
+    newPos: (input, pos) => checkNum(pos) + 4
   },
   2: {
-    fn: (input, pos, operand1, operand2, operand3) => (input[operand3] = operand1 * operand2),
-    newPos: (input, pos) => pos + 4
+    fn: (input, pos, operand1, operand2, operand3) =>
+      (input[operand3] = checkNum(operand1) * checkNum(operand2)),
+    newPos: (input, pos) => checkNum(pos) + 4
   },
   3: {
     fn: (input, pos, operand1, operand2, operand3, inputVal) =>
@@ -37,45 +39,102 @@ export const opCodeSolver = {
   },
   4: {
     fn: (input, pos, operand1, operand2, operand3, inputVal, outputFunc) => outputFunc(operand1),
-    newPos: (input, pos) => pos + 2
+    newPos: (input, pos) => checkNum(pos) + 2
   },
   5: {
-    newPos: (input, pos, operand1, operand2) => (operand1 !== 0 ? operand2 : pos + 3)
+    newPos: (input, pos, operand1, operand2, operand3) =>
+      operand1 !== 0 ? operand2 : checkNum(pos) + 3
   },
   6: {
-    newPos: (input, pos, operand1, operand2) => (operand1 === 0 ? operand2 : pos + 3)
+    newPos: (input, pos, operand1, operand2, operand3) =>
+      operand1 === 0 ? operand2 : checkNum(pos) + 3
   },
   7: {
     fn: (input, pos, operand1, operand2, operand3) =>
       (input[operand3] = operand1 < operand2 ? 1 : 0),
-    newPos: (input, pos) => pos + 4
+    newPos: (input, pos) => checkNum(pos) + 4
   },
   8: {
     fn: (input, pos, operand1, operand2, operand3) =>
       (input[operand3] = operand1 === operand2 ? 1 : 0),
-    newPos: (input, pos) => pos + 4
+    newPos: (input, pos) => checkNum(pos) + 4
+  },
+  9: {
+    fn: (input, pos, operand1, operand2, operand3, inputVal, out, base) =>
+      checkNum(base) + checkNum(operand1),
+    newPos: (input, pos) => checkNum(pos) + 2
   }
 };
 
-export const intCodeSolver = (input, pos, inputVal, out = () => {}) => {
-  const [opCode, paramMode1, paramMode2, paramMode3] = paramCodes(input[pos]);
-  if (opCode === 99) {
-    return undefined;
+export const overwriteArray = (array1, array2) => {
+  return array2;
+};
+
+const checkNum = num => num || 0;
+
+export const intCodeSolver = (
+  input,
+  pos = 0,
+  inputVal = [],
+  out = output => console.log('out: ', output),
+  base = checkNum(0)
+) => {
+  let exit = false;
+
+  while (!exit) {
+    const [opCode, paramMode1, paramMode2, paramMode3] = paramCodes(checkNum(input[pos]));
+    if (opCode === 99) {
+      exit = true;
+      return undefined;
+    }
+    if (opCode === 3 && inputVal.length === 0) {
+      return pos;
+    }
+
+    let operand1 =
+      paramMode1 === 0 && opCode !== 3
+        ? input[input[pos + 1]]
+        : paramMode1 === 2
+        ? opCode !== 3
+          ? input[input[pos + 1] + base]
+          : input[pos + 1] + base
+        : input[pos + 1];
+    let operand2 =
+      paramMode2 === 0 && opCode !== 3
+        ? input[input[pos + 2]]
+        : paramMode2 === 2
+        ? input[input[pos + 2] + base]
+        : input[pos + 2];
+    let operand3 =
+      paramMode3 === 0 && opCode !== 1 && opCode !== 2 && opCode !== 7 && opCode !== 8
+        ? input[input[pos + 3]]
+        : paramMode3 === 2
+        ? opCode !== 1 && opCode !== 2 && opCode !== 7 && opCode !== 8
+          ? input[input[pos + 3] + base]
+          : input[pos + 3] + base
+        : input[pos + 3];
+
+    operand1 = checkNum(operand1);
+    operand2 = checkNum(operand2);
+    operand3 = checkNum(operand3);
+
+    const solver = opCodeSolver[opCode];
+    if (solver) {
+      if (solver.fn) {
+        if (opCode === 9) {
+          base = solver.fn(input, pos, operand1, operand2, operand3, inputVal, out, base);
+        } else {
+          solver.fn(input, pos, operand1, operand2, operand3, inputVal, out, base);
+        }
+      }
+    } else {
+      console.log('could not find solver for ', opCode, opCode, typeof opCode);
+    }
+    if ((opCode > 9 && opCode !== 99) || opCode < 0) {
+      console.log('unknown opCode', opCode);
+    }
+    const newPos = solver.newPos(input, pos, operand1, operand2, operand3);
+
+    pos = newPos;
   }
-  if (opCode === 3 && inputVal.length === 0) {
-    return pos;
-  }
-
-  const operand1 = paramMode1 === 0 && opCode !== 3 ? input[input[pos + 1]] : input[pos + 1];
-  const operand2 = paramMode2 === 0 ? input[input[pos + 2]] : input[pos + 2];
-  const operand3 =
-    paramMode3 === 0 && opCode !== 1 && opCode !== 2 && opCode !== 7 && opCode !== 8
-      ? input[input[pos + 3]]
-      : input[pos + 3];
-
-  const solver = opCodeSolver[opCode];
-  solver.fn && solver.fn(input, pos, operand1, operand2, operand3, inputVal, out);
-  const newPos = solver.newPos(input, pos, operand1, operand2, operand3);
-
-  return intCodeSolver(input, newPos, inputVal, out);
 };
