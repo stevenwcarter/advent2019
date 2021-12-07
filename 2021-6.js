@@ -8,7 +8,7 @@ const part1Input = fs.readFileSync('./2021-6-input.txt', 'utf8');
 
 const input = part1Input
   .split(',')
-  .map(a => parseInt(a, 10))
+  .map((a) => parseInt(a, 10))
   .sort();
 // const input = testInput
 //   .split(',')
@@ -21,7 +21,7 @@ const ageCounts = input.reduce((acc, val) => {
 }, {});
 console.log(ageCounts);
 
-const ageOneDay = arr => {
+const ageOneDay = (arr) => {
   let newAgeCounts = {};
   newAgeCounts['8'] = arr['0'];
   newAgeCounts['7'] = arr['8'];
