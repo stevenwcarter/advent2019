@@ -7,9 +7,9 @@ const testInput = `16,1,2,0,4,2,7,1,2,14`;
 const part1Input = fs.readFileSync('./2021-7-input.txt', 'utf8');
 
 // const input = testInput.split(',').map((a) => parseInt(a, 10));
-const input = part1Input.split(',').map(a => parseInt(a, 10));
+const input = part1Input.split(',').map((a) => parseInt(a, 10));
 
-const findAverage = array => array.reduce((a, b) => a + b, 0) / input.length;
+const findAverage = (array) => array.reduce((a, b) => a + b, 0) / input.length;
 
 const min = Math.min(...input);
 const max = Math.max(...input);
@@ -29,7 +29,7 @@ const max = Math.max(...input);
 //
 // console.log(minFuelCost, minHorizPos);
 
-const fuelCostForDistance = dist => {
+const fuelCostForDistance = (dist) => {
   let cost = 0;
   for (let i = 1; i <= dist; i++) {
     cost += i;

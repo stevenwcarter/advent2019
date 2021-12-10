@@ -20,18 +20,18 @@ const input = readInputAsStrings(part1Input);
 
 const coords = input.reduce((acc, line) => {
   const [coord1, coord2] = line.split(' -> ');
-  const [x1, y1] = coord1.split(',').map(a => parseInt(a, 10));
-  const [x2, y2] = coord2.split(',').map(a => parseInt(a, 10));
+  const [x1, y1] = coord1.split(',').map((a) => parseInt(a, 10));
+  const [x2, y2] = coord2.split(',').map((a) => parseInt(a, 10));
   return acc.concat([[x1, y1, x2, y2]]);
 }, []);
 
-const usable = coords.filter(entries => {
+const usable = coords.filter((entries) => {
   const [x1, y1, x2, y2] = [...entries];
   return x1 === x2 || y1 === y2;
 });
 
 const diagram1 = {};
-const getValue = key => {
+const getValue = (key) => {
   console.log(diagram1[key]);
   if (key in diagram1) {
     return diagram1[key];
@@ -39,7 +39,7 @@ const getValue = key => {
   return 0;
 };
 
-usable.map(entries => {
+usable.map((entries) => {
   const [x1, y1, x2, y2] = [...entries];
   let staticVal = 0;
   let min = 0;
@@ -75,7 +75,7 @@ usable.map(entries => {
     diagram1[key] = key in diagram1 ? diagram1[key] + 1 : 1;
   }
 });
-console.log(Object.keys(diagram1).filter(k => diagram1[k] >= 2).length);
+console.log(Object.keys(diagram1).filter((k) => diagram1[k] >= 2).length);
 
 const rangeArray = (start, stop) => {
   let range = [];
@@ -92,7 +92,7 @@ const rangeArray = (start, stop) => {
 };
 
 const diagram2 = {};
-coords.map(entries => {
+coords.map((entries) => {
   let [x1, y1, x2, y2] = [...entries];
   if (x1 === x2 || y1 === y2) {
     let staticVal = 0;
@@ -139,4 +139,4 @@ coords.map(entries => {
     }
   }
 });
-console.log(Object.keys(diagram2).filter(k => diagram2[k] >= 2).length);
+console.log(Object.keys(diagram2).filter((k) => diagram2[k] >= 2).length);

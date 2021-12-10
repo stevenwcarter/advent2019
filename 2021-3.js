@@ -19,11 +19,11 @@ const part1Input = fs.readFileSync('./2021-3-input.txt', 'utf8');
 // const input = readInputAsStrings(testInput);
 const input = readInputAsStrings(part1Input);
 
-const findGammaAndEpsilon = array => {
+const findGammaAndEpsilon = (array) => {
   const ones = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
   const zeros = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 
-  array.map(line => {
+  array.map((line) => {
     const parts = line.split('');
     for (var i = 0; i < parts.length; i++) {
       const elem = parts[i];
@@ -67,12 +67,12 @@ let co2 = [...input];
 
 for (let i = 0; i < oxygen[0].length && oxygen.length > 1; i++) {
   const [gamma] = findGammaAndEpsilon(oxygen);
-  oxygen = oxygen.filter(elem => elem[i] === gamma[i]);
+  oxygen = oxygen.filter((elem) => elem[i] === gamma[i]);
 }
 for (let i = 0; i < co2[0].length && co2.length > 1; i++) {
   const [, epsilon] = findGammaAndEpsilon(co2);
   //   console.log(epsilon);
-  co2 = co2.filter(elem => elem[i] === epsilon[i]);
+  co2 = co2.filter((elem) => elem[i] === epsilon[i]);
   //   console.log(co2);
 }
 const oxygenDecimal = parseInt(oxygen, 2);

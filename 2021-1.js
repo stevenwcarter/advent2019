@@ -7,7 +7,7 @@ const part1Input = fs.readFileSync('./2021-1-input.txt', 'utf8');
 
 const inputArray = readInputAsNumbers(part1Input);
 
-const countLargerThanPrevious = arrayInput => {
+const countLargerThanPrevious = (arrayInput) => {
   let previous;
   return arrayInput.reduce((acc, meas, index) => {
     if (index !== 0 && meas > previous) {

@@ -15,7 +15,7 @@ const input = readInputAsStrings(part1Input);
 
 let depth1 = 0;
 let distance1 = 0;
-input.map(line => {
+input.map((line) => {
   const [direction, x] = line.split(' ');
   if (direction === 'forward') {
     distance1 += parseInt(x, 10);
@@ -36,7 +36,7 @@ let depth2 = 0;
 let distance2 = 0;
 let aim = 0;
 
-input.map(line => {
+input.map((line) => {
   const [direction, x] = line.split(' ');
   if (direction === 'forward') {
     distance2 += parseInt(x, 10);
