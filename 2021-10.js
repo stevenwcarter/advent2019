@@ -65,18 +65,14 @@ input.forEach((line) => {
     }
   }
   if (!corruption) {
-    for (let i = stack.length - 1; i >= 0; i--) {
-      let item = stack[i];
-      if (item === OPEN_ANGLE) {
-        lineFixes.push(CLOSE_ANGLE);
-      } else if (item === OPEN_CURLY) {
-        lineFixes.push(CLOSE_CURLY);
-      } else if (item === OPEN_PAREN) {
-        lineFixes.push(CLOSE_PAREN);
-      } else if (item === OPEN_SQUARE) {
-        lineFixes.push(CLOSE_SQUARE);
-      }
-    }
+    lineFixes = stack
+      .join('')
+      .replaceAll(OPEN_ANGLE, CLOSE_ANGLE)
+      .replaceAll(OPEN_SQUARE, CLOSE_SQUARE)
+      .replaceAll(OPEN_CURLY, CLOSE_CURLY)
+      .replaceAll(OPEN_PAREN, CLOSE_PAREN)
+      .split('')
+      .reverse();
     fixes.push(lineFixes);
   } else {
     corruptions.push(corruption);
