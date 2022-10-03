@@ -5,6 +5,8 @@
   "author": "Steven Carter <steven.carter@bounteous.com>",
   "license": "MIT",
   "dependencies": {
+    "collections": "^5.1.12",
+    "core-js": "^3.19.3",
     "jest": "^27.4.3",
     "line-reader": "^0.4.0",
     "lodash": "^4.17.21",
